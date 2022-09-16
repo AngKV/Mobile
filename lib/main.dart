@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'ui/products/products_manager.dart';
+import 'ui/products/product_detail_sceen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Shop',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Lato',
         colorScheme: ColorScheme.fromSwatch(
@@ -20,8 +23,10 @@ class MyApp extends StatelessWidget {
           secondary: Colors.deepOrange,
         ),
       ),
-      home: Container(
-        color: Colors.green,
+      home: SafeArea(
+        child: ProductDetailScreen(
+          ProductsManager().items[0],
+        ),
       ),
     );
   }
