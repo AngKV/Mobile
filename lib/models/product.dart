@@ -27,6 +27,7 @@ class Product {
       id: id ?? this.id,
       title: title ?? this.title,
       description: description ?? this.description,
+      // ignore: unnecessary_this
       price: price ?? this.price,
       imageUrl: imageUrl ?? this.imageUrl,
       isFavorite: isFavorite ?? this.isFavorite,
