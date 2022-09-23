@@ -5,7 +5,7 @@ import 'cart_item_card.dart';
 import 'cart_manager.dart';
 
 class CartScreen extends StatelessWidget {
-  static const routeName = '/cart';
+  static const routeN = '/cart';
 
   const CartScreen({super.key});
 

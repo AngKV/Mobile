@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myshop/ui/cart/cart_screen.dart';
-import './ui/products/products_manager.dart';
-import './ui/products/product_detail_screen.dart';
-import './ui/products/product_overview_screen.dart';
-import './ui/products/user_products_screen.dart';
-import './ui/orders/orders_screen.dart';
+import './ui/screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,9 +22,25 @@ class MyApp extends StatelessWidget {
           secondary: Colors.deepOrange,
         ),
       ),
-      home: SafeArea(
-        child: OrdersScreen(),
-      ),
+      home: const ProductOverviewScreen(),
+      routes: {
+        CartScreen.routeN: (context) => const CartScreen(),
+        OrdersScreen.routeN: (context) => const OrdersScreen(),
+        UserProductsScreen.routeN: (context) => const UserProductsScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == ProductDetailScreen.routeN) {
+          final productId = settings.arguments as String;
+          return MaterialPageRoute(
+            builder: (context) {
+              return ProductDetailScreen(
+                ProductsManager().findById(productId),
+              );
+            },
+          );
+        }
+        return null;
+      },
     );
   }
 }
