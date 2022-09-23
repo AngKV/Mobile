@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myshop/ui/cart/cart_screen.dart';
+import 'package:myshop/ui/cart/cart_manager.dart';
+import '../cart/cart_screen.dart';
 import 'products_grid.dart';
 import '../share/app_drawer.dart';
+import 'top_right_badge.dart';
 
 enum FilterOptions { favorites, all }
 
@@ -31,12 +33,15 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   }
 
   Widget buildShoppingCartIcon() {
-    return IconButton(
-      onPressed: () {
-        Navigator.of(context).pushNamed(CartScreen.routeN);
-      },
-      icon: const Icon(
-        Icons.shopping_cart,
+    return TopRightBadge(
+      data: CartManager().productCount,
+      child: IconButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed(CartScreen.routeN);
+        },
+        icon: const Icon(
+          Icons.shopping_cart,
+        ),
       ),
     );
   }
