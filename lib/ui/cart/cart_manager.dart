@@ -3,7 +3,7 @@ import '../../models/product.dart';
 import 'package:flutter/foundation.dart';
 
 class CartManager with ChangeNotifier {
-  final Map<String, CartItem> _items = {
+  Map<String, CartItem> _items = {
     'p1': CartItem(
       id: 'c1',
       title: 'Red Shirt',
@@ -73,6 +73,11 @@ class CartManager with ChangeNotifier {
     } else {
       _items.remove(productId);
     }
+    notifyListeners();
+  }
+
+  void clear() {
+    _items = {};
     notifyListeners();
   }
 }
