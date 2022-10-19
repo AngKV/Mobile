@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'user_product_list_title.dart';
 import 'products_manager.dart';
 import '../share/app_drawer.dart';
@@ -21,22 +22,26 @@ class UserProductsScreen extends StatelessWidget {
       drawer: const AppDrawer(),
       body: RefreshIndicator(
         onRefresh: () async => print('Refresh products'),
-        child: bulidUserProductListView(productsManager),
+        child: bulidUserProductListView(),
       ),
     );
   }
 
-  Widget bulidUserProductListView(ProductsManager productsManager) {
-    return ListView.builder(
-      itemCount: productsManager.itemCount,
-      itemBuilder: (ctx, i) => Column(
-        children: [
-          UserProductListTitle(
-            productsManager.items[i],
+  Widget bulidUserProductListView() {
+    return Consumer<ProductsManager>(
+      builder: (context, productsManager, child) {
+        return ListView.builder(
+          itemCount: productsManager.itemCount,
+          itemBuilder: (ctx, i) => Column(
+            children: [
+              UserProductListTitle(
+                productsManager.items[i],
+              ),
+              const Divider(),
+            ],
           ),
-          const Divider(),
-        ],
-      ),
+        );
+      },
     );
   }
 
