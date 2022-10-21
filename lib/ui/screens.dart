@@ -8,3 +8,4 @@ export './cart/cart_manager.dart';
 
 export './orders/orders_manager.dart';
 export './orders/orders_screen.dart';
+export './products/edit_product_screen.dart';
