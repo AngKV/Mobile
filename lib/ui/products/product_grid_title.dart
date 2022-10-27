@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../models/product.dart';
 import './product_detail_screen.dart';
+import './products_manager.dart';
 
 class ProductGridTitle extends StatelessWidget {
   const ProductGridTitle(this.product, {super.key});
@@ -44,7 +45,7 @@ class ProductGridTitle extends StatelessWidget {
               ),
               color: Theme.of(context).colorScheme.secondary,
               onPressed: () {
-                product.isFavorite = !isFavorite;
+                ctx.read<ProductsManager>().toggleFavoriteStatus(product);
               },
             );
           }),
