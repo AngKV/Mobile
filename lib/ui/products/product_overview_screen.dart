@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/products/products_manager.dart';
 import '../cart/cart_manager.dart';
@@ -85,9 +83,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
           _showOnlyFavorites.value = false;
         }
       },
-      icon: const Icon(
-        Icons.more_vert,
-      ),
+      icon: const Icon(Icons.more_vert),
       itemBuilder: (ctx) => [
         const PopupMenuItem(
           value: FilterOptions.favorites,
